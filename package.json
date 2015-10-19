@@ -1,8 +1,7 @@
 {
   "name": "jRCarousel",
   "version": "0.1.0",
-  "description": "jRCarousel - jQuery Responsive Carousel, a most lightweight responsive carousel plugin"
-l plugin",
+  "description": "jRCarousel - jQuery Responsive Carousel, a most lightweight responsive carousel plugin",
   "main": "jRCarousel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,14 +13,19 @@ l plugin",
   "keywords": [
     "jquery-plugin",
     "ecosystem:jquery",
-    "jQuery-slider",
+    "jQuery slider",
     "Responsive Slider",
-    "slider",
-    "Resposive Carousel"
+    "Carousel",
+    "Slider",
+    "Resposive Carousel",
+    "Gallery",
+    "lightweight"
   ],
   "author": "Vinayak Rangnathrao Jadhav",
   "license": "MIT",
-  "dependencies":"^1.7.1",
+  "dependencies":{
+	  "jQuery":"^1.7.1"
+  }
   "bugs": {
     "url": "https://github.com/vinayakjadhav/jRCarousel/issues"
   },
