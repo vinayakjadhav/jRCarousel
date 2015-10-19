@@ -36,12 +36,12 @@
 			/* create jRCarousel stack, and keep first slide at top of stack */
 			for(var i = 1;  i < _totalSlides; i++){
 				var img = $( "<img class='slide' />" )
-						.css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', objectFit:_settings.slideLayout, backgroundColor:'#000'})
+						.css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', objectFit:_settings.slideLayout, backgroundColor:'#fff'})
 						.prop({src:_settings.slides[i], alt:"'"+_settings.slides[i]+"'"});
 				_wrapper.append(img)
 			}
 			_currentSlide = $( "<img class='slide' />" )
-				.css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', objectFit:_settings.slideLayout, backgroundColor:'#000'})
+				.css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', objectFit:_settings.slideLayout, backgroundColor:'#fff'})
 				.prop({src:_settings.slides[0], alt:"'"+_settings.slides[0]+"'"});
 			_wrapper.append(_currentSlide)
 			
