@@ -142,9 +142,8 @@
 					}
 				})
 			}
-				
-			
 		}
+		
 		function _scroll(slideNumber){
 			if(slideNumber==1){
 				_currentSlide.css({
