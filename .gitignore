@@ -1,5 +1,2 @@
-!*.js
-!*.html
-!*.jpg
-!*.jpeg
-!*.png
+.settings
+.project
