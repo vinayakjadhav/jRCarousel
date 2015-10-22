@@ -11,9 +11,10 @@
 				slides : [],
 				slideLayout : 'contain',
 				animation: 'slide',
-				animationDuration: 1200,
+				animationSpeed: 400,
 				animationInterval: 1000,
-				autoplay: true
+				autoplay: true,
+				onSlideShow: function(){}
 		}
 		var _settings = $.extend( true, {}, _defaults, options );
 		var _container = this;
@@ -26,6 +27,7 @@
 		var _animations = new Animations();
 		var _previousButton;
 		var _nextButton;
+		var _navigations ='';
 		var _timer;
 		
 		//a = _wrapper;
@@ -34,29 +36,41 @@
 			_container.css({width: _width+'px', height: _height+'px' });
 			
 			/* create jRCarousel stack, and keep first slide at top of stack */
-			for(var i = 1;  i < _totalSlides; i++){
-				var img = $( "<img class='slide' />" )
+			for(var i = 0;  i < _totalSlides; i++){
+				var slide = $( "<img class='slide' data-index="+i+" />" )
 						.css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', objectFit:_settings.slideLayout, backgroundColor:'#fff'})
 						.prop({src:_settings.slides[i], alt:"'"+_settings.slides[i]+"'"});
-				_wrapper.append(img)
+				_wrapper.append(slide)
+				_navigations += '<div class=nav></div>'
 			}
-			_currentSlide = $( "<img class='slide' />" )
-				.css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', objectFit:_settings.slideLayout, backgroundColor:'#fff'})
-				.prop({src:_settings.slides[0], alt:"'"+_settings.slides[0]+"'"});
-			_wrapper.append(_currentSlide)
+			_currentSlide = _wrapper.find('.slide').first().detach();
+			_wrapper.append(_currentSlide);
+			
+			_wrapper.append($('<div class=navWrapper />').css({
+				position: 'absolute',
+			zIndex: 1,
+		    bottom: 0,
+		    textAlign: 'center',
+		    width: '100%'})
+		    .append($(_navigations).css({
+			display: 'inline-block',
+		    margin: '5px',
+		    cursor: 'pointer',
+		    borderRadius: '12px',
+		    backgroundColor: '#777',
+		    opacity: '0.7',
+		    width: '12px',
+		    height: '12px'})));
 			
 			/* create control buttons */
-			_previousButton = $( "<div class='previous' style='left: 8px;transform: rotate(-45deg);'></div>");
-			_nextButton = $( "<div class='next' style='right: 8px;transform: rotate(135deg);'></div>");
-			_wrapper.append(_previousButton, _nextButton)
-			_previousButton.add(_nextButton).css({position: 'absolute', top:'40%', zIndex:1, display: 'inline-block', padding: '18px', boxShadow: '8px 8px 0 2px #777 inset', cursor:'pointer'})
+			_previousButton = $( "<div class='previous' style='left: 9px;transform: rotate(-45deg);'></div>");
+			_nextButton = $( "<div class='next' style='right: 9px;transform: rotate(135deg);'></div>");
+			_previousButton.add(_nextButton).css({position: 'absolute', top:'42%', zIndex:1, display: 'inline-block', padding: '18px', boxShadow: '7px 7px 0 1px #777 inset', cursor:'pointer',opacity:'0.7'})
+			_wrapper.append(_previousButton, _nextButton);
 			
 			/* start carousel if autoplay */
-			if(_settings.autoplay){
-				_timer = setInterval(function(){
-					 		console.log('polling '+_timer +': '+ new Date().toTimeString())
-					 		_showNextSlide()
-					},_settings.animationInterval+_settings.animationDuration)
+			if(!_settings.autoplay){
+				_timer = setInterval(_startAnimation, _settings.animationInterval+_settings.animationSpeed)
 				_previousButton.add(_nextButton).hide()
 			}
 			
@@ -67,10 +81,12 @@
 		})()
 		
 		_previousButton.on('click', function(){
-			_showPreviousSlide();
+			_previousButton.add(_nextButton).hide();
+			_startAnimation(_getPreviousSlide().data('index'));
 		});
 		_nextButton.on('click', function(){
-			_showNextSlide();
+			_previousButton.add(_nextButton).hide();
+			_startAnimation(_getNextSlide().data('index'));
 		});
 		
 		_wrapper.hover(function(){
@@ -78,10 +94,12 @@
 			_previousButton.add(_nextButton).fadeIn();
 		},function(){
 			_previousButton.add(_nextButton).fadeOut();
-			_timer = setInterval(function(){
-						_showNextSlide();
-					},_settings.animationInterval+_settings.animationDuration)
+			_timer = setInterval(_startAnimation, _settings.animationInterval+_settings.animationSpeed)
 		});
+		
+		_wrapper.on('click', '.nav', function(){
+			_startAnimation($(this).index());
+		})
 		
 		function Animations(){
 			this.animations = {
@@ -96,24 +114,35 @@
 				this.animations[animation](direction);
 		}
 		
-		function _getCurrentSlide(slideNumber){
-			return _getSlide(slideNumber);
+		function _startAnimation(targetSlideIndex){
+			if(_getCurrentSlide().data('index')==targetSlideIndex){return};
+			
+			if(_getCurrentSlide().data('index')<targetSlideIndex){
+				/* get next slide & make it to appear on top of stack */
+				while(_getNextSlide().data('index')!=targetSlideIndex){
+					_currentSlide = _getNextSlide().hide().detach().appendTo(_wrapper);
+				}
+				_currentSlide = _getNextSlide().detach().appendTo(_wrapper)
+				_animations.run(_settings.animation, 1);
+			}else{
+					/* get next slide & make it to appear on top of stack */
+				_currentSlide = _getCurrentSlide()
+				_wrapper.find('.slide').not(_currentSlide).hide()
+				b = _wrapper.find('.slide[data-index='+targetSlideIndex+']').show()
+				_animations.run(_settings.animation, -1);
+			}
+			_wrapper.find('.nav').css({border:'none'});
+			_wrapper.find('.nav').eq(targetSlideIndex).css({border: '2px solid #ccc'})			
 		}
-		function _setCurrentSlide(slide){
-			_currentSlide = slide;
+		
+		function _getPreviousSlide(){
+			return _wrapper.find('.slide').eq(-2);
 		}
-		function _getSlide(slideNumber){
-			_setCurrentSlide(_wrapper.find('.slide').eq((slideNumber-1)%_totalSlides))
-			return _currentSlide;
+		function _getCurrentSlide(){
+			return _wrapper.find('.slide').last();
 		}
-		function _showPreviousSlide(){
-			_getCurrentSlide(0)
-			_animations.run(_settings.animation, 0);
-		}
-		function _showNextSlide(){
-			/* get next slide to appear on top of stack */
-			_wrapper.append(_getCurrentSlide(1).detach())
-			_animations.run(_settings.animation, 1);
+		function _getNextSlide(){
+			return _wrapper.find('.slide').first();
 		}
 		
 		function _slide(slideNumber){
@@ -125,20 +154,30 @@
 					left: 0
 				},
 				{
-					duration: _settings.animationDuration,
-					complete: function(){
-						
+					duration: _settings.animationSpeed,
+					complete: function(){	
+						_settings.onSlideShow.call(this, _currentSlide);
+						_wrapper.find('.slide').show()
+						_previousButton.add(_nextButton).show()
 					}
 				})
 			}else{
-				_currentSlide.css({left:0}).stop()
+				_currentSlide.css({left:0})
 				.animate({
 					left: _width+'px'
 				},
 				{
-					duration: _settings.animationDuration,
+					duration: _settings.animationSpeed,
 					complete: function(){
-						_wrapper.prepend(_currentSlide.css({left:0}).detach())	
+						_currentSlide.css({left:0}).detach().prependTo(_wrapper);
+						while(_getCurrentSlide().data('index')!=b.data('index')){
+							_currentSlide = _getCurrentSlide().detach().prependTo(_wrapper);
+						}
+						_currentSlide = _getCurrentSlide();
+						_settings.onSlideShow.call(this, _currentSlide);
+						_wrapper.find('.slide').show()
+						_previousButton.add(_nextButton).show()
+						
 					}
 				})
 			}
@@ -153,9 +192,9 @@
 					top: 0
 				},
 				{
-					duration: _settings.animationDuration,
+					duration: _settings.animationSpeed,
 					complete: function(){
-						
+						_settings.onSlideShow.call(this, _currentSlide);
 					}
 				})
 				
@@ -165,9 +204,10 @@
 					top: _height+'px'
 				},
 				{
-					duration: _settings.animationDuration,
+					duration: _settings.animationSpeed,
 					complete: function(){
-						_wrapper.prepend(_currentSlide.css({top:0}).detach())	
+						_wrapper.prepend(_currentSlide.css({top:0}).detach());
+						_settings.onSlideShow.call(this, _currentSlide);
 					}
 				})
 			}
@@ -182,9 +222,9 @@
 					opacity: 1
 				},
 				{
-					duration: _settings.animationDuration,
+					duration: _settings.animationSpeed,
 					complete: function(){
-						
+						_settings.onSlideShow.call(this, _currentSlide);
 					}
 				})
 			}else{
@@ -193,9 +233,10 @@
 					opacity: 0
 				},
 				{
-					duration: _settings.animationDuration,
+					duration: _settings.animationSpeed,
 					complete: function(){
-						_wrapper.prepend(_currentSlide.css({opacity: 1}).detach())	
+						_wrapper.prepend(_currentSlide.css({opacity: 1}).detach());
+						_settings.onSlideShow.call(this, _currentSlide);
 					}
 				})
 			}
@@ -210,9 +251,9 @@
 					height: '100%'
 				},
 				{
-				duration: _settings.animationDuration,
+				duration: _settings.animationSpeed,
 				complete: function(){
-					
+					_settings.onSlideShow.call(this, _currentSlide);
 				}
 			})
 			}else{
@@ -221,9 +262,10 @@
 					height: 0
 				},
 				{
-					duration: _settings.animationDuration,
+					duration: _settings.animationSpeed,
 					complete: function(){
-						_wrapper.prepend(_currentSlide.css({height:'100%'}).detach())	
+						_wrapper.prepend(_currentSlide.css({height:'100%'}).detach());
+						_settings.onSlideShow.call(this, _currentSlide);
 					}
 				})
 			}
@@ -240,9 +282,9 @@
 					left:0
 				},
 				{
-				duration: _settings.animationDuration,
+				duration: _settings.animationSpeed,
 				complete: function(){
-					
+					_settings.onSlideShow.call(this, _currentSlide);
 				}
 			})
 			}else{
@@ -251,9 +293,10 @@
 					width: 0
 				},
 				{
-					duration: _settings.animationDuration,
+					duration: _settings.animationSpeed,
 					complete: function(){
-						_wrapper.prepend(_currentSlide.css({width:'100%'}).detach())	
+						_wrapper.prepend(_currentSlide.css({width:'100%'}).detach());
+						_settings.onSlideShow.call(this, _currentSlide);
 					}
 				})
 			}		
