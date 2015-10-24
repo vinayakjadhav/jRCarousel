@@ -37,7 +37,7 @@
 		
 		(function setup(){
 			/* set initial container size */
-			_container.css({width: _width+'px', height: _height+'px' });
+			//_container.css({width: _width+'px', height: _height+'px' });
 			
 			/* create jRCarousel stack, and keep first slide at top of stack */
 			for(var i = 0;  i < _totalSlides; i++){
@@ -51,15 +51,15 @@
 			
 			if(_settings.navigation){
 				/* create navigation bar */
-				var _navigation = $('<div class=navWrapper />').css({ position: 'absolute', zIndex: 1, bottom: 0, textAlign: 'center', width: '100%'});
+				var _navigation = $('<div class=navWrapper />').css({ textAlign: 'right' });
 				for(var i = 0;  i < _totalSlides; i++){
 					_navigation.append('<div class=nav></div>');
 				}
-				_navigation.find('.nav').css({ display: 'inline-block', margin: '5px', cursor: 'pointer', borderRadius: '12px', backgroundColor: '#777',	opacity: '0.7',	width: '12px', height: '12px' });
-				_wrapper.append(_navigation);
+				_navigation.find('.nav').css({ display: 'inline-block', margin: '5px', cursor: 'pointer', borderRadius: '12px', backgroundColor: '#777', width: '12px', height: '12px' }).first().css({border: '2px dashed #ccc'});
+				_wrapper.after(_navigation);
 				
 				 /* event handler */
-				_wrapper.on('click', '.nav', function(){
+				_container.on('click', '.nav', function(){
 					_startCarousel(_getSlideByIndex($(this).index()));
 				})
 			}
@@ -91,7 +91,7 @@
 				_navButtons.hide();
 				
 				/* event handlers */	
-				_wrapper.hover(function(){
+				_container.hover(function(){
 					clearInterval(_timer);
 					_navButtons.fadeIn();
 				},function(){
@@ -153,8 +153,8 @@
 				_wrapper.find('.slide').not([_currentSlide[0],_getSlideByIndex(_targetSlideIndex)[0]]).hide();
 				_animations.run(_settings.animation, -1);
 			}
-			_wrapper.find('.nav').css({border:'none'});
-			_wrapper.find('.nav').eq(_targetSlideIndex).css({border: '2px solid #ccc'});	
+			_container.find('.nav').css({border:'none'});
+			_container.find('.nav').eq(_targetSlideIndex).css({border: '2px dashed #ccc'});	
 		}
 		
 		function onAnimationComplete(direction){
