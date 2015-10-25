@@ -7,33 +7,37 @@
 <script type="text/javascript" src="./src/jRCarousel.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var images = ['images/020.jpg','images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg']
-	//var images = ['01','02','03','04','05']
-	var images = ['http://lorempixel.com//1600/700','http://lorempixel.com//1600/701','http://lorempixel.com//1600/702','http://lorempixel.com//1600/703','http://lorempixel.com//1600/704','http://lorempixel.com//1600/705','http://lorempixel.com//1600/706',] 
+	//var images = ['images/020.jpg','images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg']
+	var images = ['http://lorempixel.com//1366/768','http://lorempixel.com//1366/761','http://lorempixel.com//1366/762','http://lorempixel.com//1366/763','http://lorempixel.com//1366/764','http://lorempixel.com//1366/765','http://lorempixel.com//1366/766',] 
+ 	
+	
 	$('.jRCarouselGallery').jRCarousel({
-		  slides: images,
+		  slides: images
+	});
+	
+ 	$('.jRCarouselGallery1').jRCarousel({
+ 		  width: 800, 				/* largest allowed width */
+		  height: 356, 				/* largest allowed height */
+		  slides: images, 			/* array of images source or gets slides by 'slide' class */
+		  slideLayout : 'contain',  /* "contain" (fit according to aspect ratio), "fill" (stretches object to fill) and "cover" (overflows box but maintains ratio) */
+		  animation: 'scroll', 		/* slide | scroll | fade | zoomInSlide | zoomInScroll */
+		  animationSpeed: 400,
+		  animationInterval: 4000,
+		  autoplay: true,
+		  onSlideShow: show,		/* callback when Slide show event occurs */
+		  navigation: 'circles'		/* circles | squares */
+	});
+ 	
+	$('.jRCarouselGallery2').jRCarousel({
 		  width: 800,
 		  height: 356,
-		  animation: 'slide',
-		  animationSpeed: 400,
-		  animationInterval: 1000,
-		  onSlideShow: show
-	});
- 	$('.jRCarouselGallery1').jRCarousel({
-		  slides: images,
-		  width: 400,
-		  height: 178,
-		  animation: 'scroll'
-	});
-	$('.jRCarouselGallery2').jRCarousel({
-		  slides: images,
-		  width: 600,
-		  height: 278,
 		  autoplay: false,
-		  animation: 'fade'
+		  animation: 'fade',
+		  navigation: 'squares'
 	});
+	
 	function show(slide){
-		$('.time').text(slide.attr('src'))
+		$('.imgSlide').text(slide.attr('src'))
 	}
 })
 
@@ -47,7 +51,9 @@ body {
 	background-color: #fff;
 	margin: 0 auto;
 }
-
+h1,h2{
+	margin: 2px auto;
+}
 .container {
 	padding-right: 15px;
 	padding-left: 15px;
@@ -69,20 +75,30 @@ body {
 	<div class="container">
 		<h1>jRCarousel - jQuery Responsive Carousel</h1>
 		<div>
-			<h1>jRCarousel Gallery Default</h1>onAnimationComplete Image shown: <span class="time"></span>
 			<div class="jRCarouselGallery"></div>
+			<h2>^ jRCarousel Gallery Default, minimal Configuration </h2>
 		</div>
+		<br/>
+		<hr/>
 		<div>
-			<h1>jRCarousel Gallery - scroll</h1>
+			<h2>jRCarousel Gallery - with all available options </h2>
+			onAnimationComplete Slide shown: <span class="imgSlide"></span>
 			<div class="jRCarouselGallery1"></div>
 		</div>
+		<br/>
+		<hr/>
 		<div>
-			<h1>jRCarousel Gallery - fade</h1>
-			<div class="jRCarouselGallery2"></div>
+			<h2>jRCarousel Gallery - with slides in template </h2>
+			<div class="jRCarouselGallery2">
+				<img class="slide" src="http://lorempixel.com//800/351" />
+				<img class="slide" src="http://lorempixel.com//800/352" />
+				<img class="slide" src="http://lorempixel.com//800/353" />
+				<img class="slide" src="http://lorempixel.com//800/354" />
+				<img class="slide" src="http://lorempixel.com//800/355" />
+			</div>
 		</div>
-		<div>
-			<hr/>
-		</div>
+		<br/>
+		<hr/>
 	</div>
 </body>
 </html>
