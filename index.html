@@ -8,9 +8,29 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <script type="text/javascript" src="https://raw.githubusercontent.com/vinayakjadhav/jRCarousel/master/dist/jRCarousel.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        	//var slides = ['images/020.jpg','images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg']
+        	var slides = [{src: 'http://lorempixel.com//1366/768'},
+        	              {src: 'http://lorempixel.com//1366/761'},
+        	              {src: 'http://lorempixel.com//1366/762'},
+        	              {src: 'http://lorempixel.com//1366/763'},
+        	              {src: 'http://lorempixel.com//1366/764'},
+        	              {src: 'http://lorempixel.com//1366/765'},
+        	              {src: 'http://lorempixel.com//1366/766'}];
+        	
+        	$('.jRCarouselGallery').jRCarousel({
+        		  slides: slides
+        	});
+        });
+    </script>    
+	
   </head>
   <body>
     <section class="page-header">
+      <div class="jRCarouselGallery"></div>
       <h1 class="project-name">jRCarousel</h1>
       <h2 class="project-tagline">jQuery Responsive Carousel - jRCarousel</h2>
       <a href="https://github.com/vinayakjadhav/jRCarousel" class="btn">View on GitHub</a>
