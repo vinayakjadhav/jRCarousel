@@ -70,8 +70,6 @@
 						var slide = $(this).attr('data-index', i).detach();
 						_wrapper.append(slide);
 					});
-					
-					
 				}
 				_wrapper.find('.slide').css({position: 'absolute', left: 0, top:0, width:'100%', height:'100%', objectFit:_settings.slideLayout, backgroundColor:'#fff'});
 				_wrapper.find('.slide img').css({ width:'100%', height:'100%', objectFit:_settings.slideLayout });
@@ -109,7 +107,7 @@
 			
 			function _createNavigation(){
 				var type = _settings.navigation;
-				var _navigation = $('<div class=navWrapper />').css({ textAlign: 'right' });
+				var _navigation = $('<div class=navigation />').css({ textAlign: 'right' });
 				for(var i = 0;  i < _wrapper.find('.slide').length; i++){
 					_navigation.append('<div class=nav></div>');
 				}
@@ -126,7 +124,7 @@
 				_container.on('click', '.nav', function(){
 					_startCarousel(_getSlideByIndex($(this).index()));
 				})
-				.css({ marginBottom: '20px' });
+				.css({ marginBottom: '24px' });
 			}
 			
 			function _playjRCarousel(){
