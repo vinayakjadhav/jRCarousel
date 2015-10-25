@@ -1,5 +1,5 @@
 # jRCarousel
-**j**Query **R**esponsive **Carousel** - __jRCarousel__
+**j**Query **R**esponsive **Carousel** - __jRCarousel__ by Vinayak Rangnathrao Jadhav
 
 ######jRCarousel is a jQuery plugin for responsive carousel with modern effects and multiple options.
 
@@ -78,3 +78,32 @@ $('.jRCarouselGallery').jRCarousel({
 ```
 ## jRCarousel Example
 ![jRCarousel](https://cloud.githubusercontent.com/assets/7734229/10716647/cf343360-7b65-11e5-9e36-15dc866456a3.png)
+
+## Public API
+- #####showSlide(slideIndex) 	:
+		shows the slide specified by the slideIndex by running animation, the slideIndex starts from 0.
+
+- #####showPreviousSlide()		:
+		shows the previous slide from current slide by running animation
+
+- #####showNextSlide()		:
+		shows the slide specified by the slideIndex by running animation
+
+- #####getSlideByIndex(slideIndex)	:
+		returns the slide's jquery object specified by the slideIndex
+
+- #####getCurrentSlide()		:
+		returns the current slide's jquery object
+
+- ###### Usage
+```
+var myJRCarousel = $('.jRCarouselGallery').jRCarousel({
+				slides: slides
+});
+
+myJRCarousel.showSlide(0);
+myJRCarousel.showPreviousSlide();
+myJRCarousel.howNextSlide();
+var slide = myJRCarousel.getSlideByIndex(1);
+var currentSlide = myJRCarousel.getCurrentSlide();
+```
