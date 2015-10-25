@@ -76,4 +76,5 @@ $('.jRCarouselGallery').jRCarousel({
   <img class="slide" src="http://lorempixel.com//800/355" />
 </div>
 ```
-
+## jRCarousel Example
+![jRCarousel](https://cloud.githubusercontent.com/assets/7734229/10716647/cf343360-7b65-11e5-9e36-15dc866456a3.png)
