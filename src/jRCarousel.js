@@ -62,7 +62,7 @@
 				if(_settings.slides.length){
 					for(var i = 0;  i < _settings.slides.length; i++){
 						var slide = $( "<img class='slide' data-index="+i+" />" )
-						.prop({src:_settings.slides[i], alt:"'"+_settings.slides[i]+"'"}).detach();
+						.prop({src:_settings.slides[i].src, alt:"'"+_settings.slides[i].src+"'"}).detach();
 						_wrapper.append(slide);
 					}
 				}else{

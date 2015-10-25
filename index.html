@@ -7,18 +7,23 @@
 <script type="text/javascript" src="https://raw.githubusercontent.com/vinayakjadhav/jRCarousel/master/dist/jRCarousel.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	//var images = ['images/020.jpg','images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg']
-	var images = ['http://lorempixel.com//1366/768','http://lorempixel.com//1366/761','http://lorempixel.com//1366/762','http://lorempixel.com//1366/763','http://lorempixel.com//1366/764','http://lorempixel.com//1366/765','http://lorempixel.com//1366/766',] 
- 	
+	//var slides = ['images/020.jpg','images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg']
+	var slides = [{src: 'http://lorempixel.com//1366/768'},
+	              {src: 'http://lorempixel.com//1366/761'},
+	              {src: 'http://lorempixel.com//1366/762'},
+	              {src: 'http://lorempixel.com//1366/763'},
+	              {src: 'http://lorempixel.com//1366/764'},
+	              {src: 'http://lorempixel.com//1366/765'},
+	              {src: 'http://lorempixel.com//1366/766'}];
 	
 	$('.jRCarouselGallery').jRCarousel({
-		  slides: images
+		  slides: slides
 	});
 	
  	$('.jRCarouselGallery1').jRCarousel({
  		  width: 800, 				/* largest allowed width */
-		  height: 356, 				/* largest allowed height */
-		  slides: images, 			/* array of images source or gets slides by 'slide' class */
+		  height: 442, 				/* largest allowed height */
+		  slides: slides, 			/* array of images source or gets slides by 'slide' class */
 		  slideLayout : 'contain',  /* "contain" (fit according to aspect ratio), "fill" (stretches object to fill) and "cover" (overflows box but maintains ratio) */
 		  animation: 'scroll', 		/* slide | scroll | fade | zoomInSlide | zoomInScroll */
 		  animationSpeed: 400,
@@ -62,7 +67,7 @@ h1,h2{
 }
 
 .jRCarouselGallery,.jRCarouselGallery1,.jRCarouselGallery2 {
-	margin: 0 auto; /*optional - if want to center align */
+	margin: 0 auto; /* optional - if want to center align */
 }
 
 .container {
