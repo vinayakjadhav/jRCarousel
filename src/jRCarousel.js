@@ -387,19 +387,19 @@
 		}	
 		
 		/* public API */
-		$.fn.jRCarousel.showSlide = function(index){
+		this.showSlide = function(index){
 			_startCarousel(_getSlideByIndex(index));
 		}
-		$.fn.jRCarousel.getCurrentSlide = function(){
+		this.getCurrentSlide = function(){
 			return _getCurrentSlide();
 		}
-		$.fn.jRCarousel.getSlideByIndex = function(index){
+		this.getSlideByIndex = function(index){
 			return _getSlideByIndex(index);
 		}
-		$.fn.jRCarousel.showPreviousSlide = function(){
+		this.showPreviousSlide = function(){
 			_startCarousel(_getPreviousSlide());
 		}
-		$.fn.jRCarousel.showNextSlide = function(){
+		this.showNextSlide = function(){
 			_startCarousel(_getNextSlide());
 		}
 		

@@ -55,8 +55,8 @@ $('.jRCarouselGallery').jRCarousel({
 	slideLayout : 'contain',  	/* "contain"-fit as per to aspect ratio | "fill"-stretches to fill |  "cover"-overflows but maintains ratio */
 	animation: 'scroll', 		/* slide | scroll | fade | zoomInSlide | zoomInScroll */
 	animationSpeed: 400,    	/* animation speed in milliseconds */
-	animationInterval: 4000,	/* Interval between transitions or per sllide show time in milliseconds*/
-	autoplay: true,         	/* start playing Carousel continuously, pauses when slide is hovered*/
+	animationInterval: 4000,	/* Interval between transitions or per slide show time in milliseconds */
+	autoplay: true,         	/* start playing Carousel continuously, pauses when slide is hovered */
 	onSlideShow: show,			/* callback when Slide show event occurs */
 	navigation: 'circles'		/* circles | squares */
 });
