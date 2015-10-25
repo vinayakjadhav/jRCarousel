@@ -107,3 +107,4 @@ myJRCarousel.howNextSlide();
 var slide = myJRCarousel.getSlideByIndex(1);
 var currentSlide = myJRCarousel.getCurrentSlide();
 ```
+------------------------------------------------------------------------------------------------------------------
