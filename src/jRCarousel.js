@@ -402,7 +402,7 @@
 		this.showNextSlide = function(){
 			_startCarousel(_getNextSlide());
 		}
-		
+
 		return this;
 	}
 	
