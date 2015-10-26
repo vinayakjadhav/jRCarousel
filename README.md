@@ -16,16 +16,15 @@
 
 ## Installation
 
+	<!-- add jQuery if not already present in your project -->
+``` javascript
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 ```
-<!-- add jQuery if not already present in your project -->
-<script type="text/javascript" 
-src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-<!-- add jRCarousel plugin -->
-<script type="text/javascript" 
-src="https://raw.githubusercontent.com/vinayakjadhav/jRCarousel/master/dist/jRCarousel.min.js">
-</script>
+	<!-- add jRCarousel plugin -->
+``` javascript
+<script src="https://cdn.rawgit.com/vinayakjadhav/jRCarousel/master/dist/jRCarousel.min.js"></script>
+```
 
-```
 #####Setup images source
 ```
 var slides = [
