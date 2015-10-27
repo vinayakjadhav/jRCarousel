@@ -13,25 +13,30 @@
     <script type="text/javascript">
         $(document).ready(function(){
         	//var slides = ['images/020.jpg','images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg']
-        	var slides = [{src: 'http://lorempixel.com//1600/608'},
-        	              {src: 'http://lorempixel.com//1600/601'},
-        	              {src: 'http://lorempixel.com//1600/602'},
-        	              {src: 'http://lorempixel.com//1600/603'},
-        	              {src: 'http://lorempixel.com//1600/604'},
-        	              {src: 'http://lorempixel.com//1600/605'},
-        	              {src: 'http://lorempixel.com//1600/606'}];
+        	var slides = [{src: 'http://lorempixel.com//1200/470'},
+        	              {src: 'http://lorempixel.com//1200/471'},
+        	              {src: 'http://lorempixel.com//1200/472'},
+        	              {src: 'http://lorempixel.com//1200/473'},
+        	              {src: 'http://lorempixel.com//1200/474'},
+        	              {src: 'http://lorempixel.com//1200/475'},
+        	              {src: 'http://lorempixel.com//1200/476'}];
         	
         	$('.jRCarouselGallery').jRCarousel({
         		  slides: slides,
         		  slideLayout: 'contain',
-        		  width : 1166,
-        		  height: 460,
+        		  width : 1200,
+        		  height: 470,
         		  navigation: 'circles',
         		  animation: 'zoomInSlide'
         	});
         });
     </script>    
-	
+	<style>
+		@media screen and (min-width: 64em)
+			.page-header {
+    				padding: 1rem 6rem;
+			}
+	</style>
   </head>
   <body>
     <section class="page-header">
