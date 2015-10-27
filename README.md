@@ -1,7 +1,7 @@
 # jRCarousel
 **j**Query **R**esponsive **Carousel** - __jRCarousel__ by Vinayak Rangnathrao Jadhav
 
-######jRCarousel is a jQuery plugin for responsive carousel with modern effects and multiple options.
+###### jRCarousel is a jQuery plugin for responsive carousel with modern effects and multiple options.
 
 ## Features
 - Modern effects
@@ -25,7 +25,7 @@
 <script src="https://cdn.rawgit.com/vinayakjadhav/jRCarousel/master/dist/jRCarousel.min.js"></script>
 ```
 
-#####Setup images source
+##### Setup images source
 ```
 var slides = [
 	{src: 'http://lorempixel.com//1366/768'},
@@ -38,14 +38,14 @@ var slides = [
 ];
 ```
 
-#####Minimal configuration with defaults
+##### Minimal configuration with defaults
 ```
 $('.jRCarouselGallery').jRCarousel({
 					slides: slides
 				});
 ```
 
-#####Configuring all available options
+##### Configuring all available options
 ```
 $('.jRCarouselGallery').jRCarousel({
  	width: 800, 				/* largest allowed width */
@@ -60,12 +60,12 @@ $('.jRCarouselGallery').jRCarousel({
 	navigation: 'circles'		/* circles | squares */
 });
 ```
-#####Images source provided in javascript
+##### Images source provided in javascript
 ```
 <div class="jRCarouselGallery"></div>
 ```
 
-#####Images source provided in template by adding class `slide`
+##### Images source provided in template by adding class `slide`
 ```
 <div class="jRCarouselGallery">
   <img class="slide" src="http://lorempixel.com//800/351" />
@@ -79,19 +79,19 @@ $('.jRCarouselGallery').jRCarousel({
 ![jRCarousel](https://cloud.githubusercontent.com/assets/7734229/10716647/cf343360-7b65-11e5-9e36-15dc866456a3.png)
 
 ## Public API
-- #####showSlide(slideIndex) 	:
+- ##### showSlide(slideIndex) 	:
 		shows the slide specified by the slideIndex by running animation, the slideIndex starts from 0.
 
-- #####showPreviousSlide()		:
+- ##### showPreviousSlide()		:
 		shows the previous slide from current slide by running animation
 
-- #####showNextSlide()		:
+- ##### showNextSlide()		:
 		shows the slide specified by the slideIndex by running animation
 
-- #####getSlideByIndex(slideIndex)	:
+- ##### getSlideByIndex(slideIndex)	:
 		returns the slide's jquery object specified by the slideIndex
 
-- #####getCurrentSlide()		:
+- ##### getCurrentSlide()		:
 		returns the current slide's jquery object
 
 - ###### Usage
