@@ -13,6 +13,8 @@
 - Useful public API for extending the functionalities
 - Large browsers support ( Internet Explorer(9+), Chrome, Firefox, Safari ..)
  
+## Live Demo
+    [Click here](http://vinayakjadhav.github.io/jRCarousel/) for live demo.
 
 ## Installation
 
