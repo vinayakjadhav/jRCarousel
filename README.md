@@ -14,7 +14,7 @@
 - Large browsers support ( Internet Explorer(9+), Chrome, Firefox, Safari ..)
  
 ## Live Demo
-    [Click here](http://vinayakjadhav.github.io/jRCarousel/) for live demo.
+   [Click here](http://vinayakjadhav.github.io/jRCarousel/) for live demo.
 
 ## Installation
 
