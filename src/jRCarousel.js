@@ -18,7 +18,7 @@
 				width : 1349,				/* largest allowed width */
 				height: 668,				/* largest allowed height */
 				slides : [], 				/* array of images source or gets slides by 'slide' class */
-				slideLayout : 'cover', 		/* contain | fill | cover */
+				slideLayout : 'fill', 		/* contain | fill | cover */
 				animation: 'slide', 		/* slide | scroll | fade | zoomInSlide | zoomInScroll */
 				animationSpeed: 700,
 				animationInterval: 2000,
