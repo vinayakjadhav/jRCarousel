@@ -150,6 +150,8 @@
 				});
 			}
 			
+			jQuery.fx.interval = 7;
+			
 		})();
 		
 		function _getPreviousSlide(){
