@@ -38,6 +38,8 @@
     "bower_components",
     "test",
     "tests",
+    "*.md",
+    ".*", 
     "images/",
 	"index.html"
   ]
