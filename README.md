@@ -17,19 +17,20 @@
    [Click here](http://vinayakjadhav.github.io/jRCarousel/) for live demo.
 
 ## Installation
-
-``` npm install jrcarousel 
+####Using npm
+``` 
+   npm install jrcarousel 
+```
+#### Using bower
+```
+   bower install jRCarousel
+```
+or
+``` 
+   bower install jrcarousel 
 ```
 
-or
-
-``` bower install jRCarousel ```
-
-or
-
-``` bower install jrcarousel ```
-
-##### old school way
+#### old school way
 
 	<!-- add jQuery if not already present in your project -->
 ``` javascript
