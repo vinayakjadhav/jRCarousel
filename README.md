@@ -18,15 +18,16 @@
 
 ## Installation
 
-```npm install jrcarousel```
+``` npm install jrcarousel 
+```
 
 or
 
-```bower install jRCarousel```
+``` bower install jRCarousel ```
 
 or
 
-```bower install jrcarousel```
+``` bower install jrcarousel ```
 
 ##### old school way
 
